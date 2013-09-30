@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 try:
-        from setuptools import setup
+        from setuptools import setup, find_packages
 except ImportError:
-        from distutils.core import setup
+        from distutils.core import setup, find_packages
 
 # tested only with it, if you tested with older version and it worked, pleas
 # let me know
@@ -15,8 +15,7 @@ setup(
     name='sphinxcontrib-manpage',
     version='0.1',
     url='https://github.com/tdi/sphinxcontrib-manpage',
-    license='BSD',
-    author=u'Dariusz Dwornikowski'
+    author='Dariusz Dwornikowski',
     author_email='dariusz.dwornikowski@cs.put.poznan.pl',
     description='Sphinx linux manpage extension',
     long_description=open('README.rst').read(),

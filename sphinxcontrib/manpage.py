@@ -9,12 +9,19 @@
 
 from docutils import nodes, utils
 from docutils.parsers.rst.roles import set_classes
+from string import Template
 import re
 
 def make_link_node(rawtext, app, name, manpage_num, options):
     """Create a link to a man page.
     """
-    ref = "http://linux.die.net/man/%s/%s" % (manpage_num, name)
+    ref = None
+    ref = app.config.linux_man_url_regex
+    if not ref:
+        ref = "http://linux.die.net/man/%s/%s" % (manpage_num, name)
+    else:
+        s = Template(ref)
+        ref = s.substitute(num=manpage_num, topic=name)
     set_classes(options)
     node = nodes.reference(rawtext, "%s(%s)" % (name, manpage_num), refuri=ref,
                            **options)
@@ -22,7 +29,7 @@ def make_link_node(rawtext, app, name, manpage_num, options):
     
 
 def man_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
-    """Link to a online man page issue.
+    """Link to an online man page issue.
     """
     app = inliner.document.settings.env.app
     p = re.compile("(\w+)\((\d)\)")
@@ -36,5 +43,6 @@ def man_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
 def setup(app):
     app.info('Initializing manpage plugin')
     app.add_role('linuxman', man_role)
+    app.add_config_value('linux_man_url_regex', None, 'env')
     return
 

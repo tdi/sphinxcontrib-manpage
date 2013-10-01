@@ -8,11 +8,15 @@ Usage
 
 `:linuxman:ls(1)` will render a link to http://linux.die.net/man/1/ls. 
 
-Todo
-----
+Config
+------
 
-1. Add URL config. 
-2. Add BSD manpages. 
+You can configure custom url with a `linux_man_url_regex` directive in `conf.py`, the syntax is as
+follows:
+
+`http://linux.die.net/man/$num/$topic`, where `$num` is the man page number and `$topic` is a
+string. 
+
 
 Licence and credits
 -------------------

@@ -32,7 +32,7 @@ def man_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     """Link to an online man page issue.
     """
     app = inliner.document.settings.env.app
-    p = re.compile("(\w+)\((\d)\)")
+    p = re.compile("([a-zA-Z0-9_\.-_]+)\((\d)\)")
     m = p.match(text)
 
     manpage_num = m.group(2)

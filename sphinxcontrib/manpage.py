@@ -11,6 +11,9 @@ from docutils import nodes, utils
 from docutils.parsers.rst.roles import set_classes
 from string import Template
 import re
+from sphinx.util import logging
+
+logger = logging.getLogger(__name__)
 
 def make_link_node(rawtext, app, name, manpage_num, options):
     """Create a link to a man page.
@@ -41,7 +44,7 @@ def man_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     return [node], []
 
 def setup(app):
-    app.info('Initializing manpage plugin')
+    logger.info('Initializing manpage plugin')
     app.add_role('linuxman', man_role)
     app.add_config_value('linux_man_url_regex', None, 'env')
     return

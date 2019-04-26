@@ -13,7 +13,7 @@ requires = ['Sphinx>=0.9']
 setup(
 
     name='sphinxcontrib-manpage',
-    version='0.5',
+    version='0.6',
     url='https://github.com/tdi/sphinxcontrib-manpage',
     author='Dariusz Dwornikowski',
     author_email='dariusz.dwornikowski@cs.put.poznan.pl',

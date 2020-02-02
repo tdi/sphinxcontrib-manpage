@@ -47,5 +47,4 @@ def setup(app):
     logger.info('Initializing manpage plugin')
     app.add_role('linuxman', man_role)
     app.add_config_value('linux_man_url_regex', None, 'env')
-    return
-
+    return {'parallel_read_safe': True}
